@@ -3,6 +3,7 @@ package com.example.gsonrecyclerimage.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private var recyclerView: RecyclerView? = null
     private var mAdapter: RecyclerView.Adapter<*>? = null
     private var arrayList: ArrayList<Photo> = ArrayList()
+    private var column: Int = 0
 
 
 
@@ -29,7 +31,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         recyclerView = findViewById(R.id.recyclerView)
-        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        column = resources.getInteger(R.integer.column_count)
+        //В две колонки
+        val layoutManager = GridLayoutManager(this, column)
+        //Одна колонка
+        //val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerView!!.layoutManager = layoutManager
         recyclerView!!.setHasFixedSize(true)
         mAdapter = Adapter(onClickItem = {
