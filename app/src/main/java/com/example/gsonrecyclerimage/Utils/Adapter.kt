@@ -11,7 +11,7 @@ import com.example.gsonrecyclerimage.Photo
 import com.example.gsonrecyclerimage.R
 import com.squareup.picasso.Picasso
 
-class Adapter (var onClickItem: (photo: Int) -> Unit,
+class Adapter (var onClickItem: (photo: String) -> Unit,
                private val arrayList: ArrayList<Photo>) : RecyclerView.Adapter<Adapter.AdapterHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Adapter.AdapterHolder {
@@ -26,6 +26,11 @@ class Adapter (var onClickItem: (photo: Int) -> Unit,
         holder.id.text = currentPhoto.id
         holder.title.text = currentPhoto.title
         Picasso.get().load(currentPhoto.url).fit().centerInside().into(holder.imageView)
+
+        holder.imageView.setOnClickListener {
+            onClickItem.invoke(currentPhoto.title)
+        }
+
 
     }
 

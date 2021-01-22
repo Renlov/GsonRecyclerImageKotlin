@@ -1,9 +1,8 @@
 package com.example.gsonrecyclerimage.Activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -63,11 +62,10 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun onClickMethod(int: Int){
-        runOnUiThread {
-            Toast.makeText(this, "Hello $int", Toast.LENGTH_LONG).show()
-            Log.d("ToastMake", "Yoy put in item")
-        }
+    private fun onClickMethod(title: String){
+        val intent = Intent(this, TargetItemActivity::class.java)
+        intent.putExtra("title", title)
+        startActivity(intent)
     }
 
     private fun getData(){

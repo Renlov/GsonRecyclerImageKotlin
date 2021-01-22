@@ -6,4 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".Activity.TargetItemActivity">
 
+    <TextView
+        android:gravity="center"
+        android:text="dddd"
+        android:textColor="@color/black"
+        android:textSize="50sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/textViewSecond"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
